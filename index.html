@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookEasy — Simple Booking App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">BookEasy</div>
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#booking">Book Now</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Book Your Appointment in Seconds</h1>
+      <p>Simple, fast, and hassle-free scheduling for all your needs.</p>
+      <a href="#booking" class="btn btn-primary">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">&#9749;</div>
+          <h3>Consultation</h3>
+          <p>One-on-one session with an expert. 60 minutes.</p>
+          <span class="tag">From £50</span>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128203;</div>
+          <h3>Strategy Session</h3>
+          <p>Deep-dive planning to set your roadmap. 90 minutes.</p>
+          <span class="tag">From £80</span>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#127775;</div>
+          <h3>Premium Package</h3>
+          <p>Full-day workshop with follow-up support included.</p>
+          <span class="tag">From £200</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section id="booking" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Book an Appointment</h2>
+      <form class="booking-form" id="bookingForm" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="Jane" required />
+            <span class="error-msg" id="firstNameError">Please enter your first name.</span>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Doe" required />
+            <span class="error-msg" id="lastNameError">Please enter your last name.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="jane@example.com" required />
+          <span class="error-msg" id="emailError">Please enter a valid email address.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+44 7000 000000" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service">Service</label>
+            <select id="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="consultation">Consultation — £50</option>
+              <option value="strategy">Strategy Session — £80</option>
+              <option value="premium">Premium Package — £200</option>
+            </select>
+            <span class="error-msg" id="serviceError">Please select a service.</span>
+          </div>
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" required />
+            <span class="error-msg" id="dateError">Please choose a date.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="time">Preferred Time</label>
+          <select id="time" required>
+            <option value="" disabled selected>Select a time slot</option>
+            <option value="09:00">09:00 AM</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="13:00">01:00 PM</option>
+            <option value="14:00">02:00 PM</option>
+            <option value="15:00">03:00 PM</option>
+            <option value="16:00">04:00 PM</option>
+          </select>
+          <span class="error-msg" id="timeError">Please select a time slot.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Additional Notes <span class="optional">(optional)</span></label>
+          <textarea id="notes" rows="4" placeholder="Any specific requirements or questions..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">Confirm Booking</button>
+      </form>
+
+      <!-- Success message (hidden until form submitted) -->
+      <div class="success-banner" id="successBanner">
+        <div class="success-icon">&#10003;</div>
+        <h3>Booking Confirmed!</h3>
+        <p id="successDetails"></p>
+        <button class="btn btn-outline" onclick="resetForm()">Book Another</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Bookings -->
+  <section id="mybookings" class="section">
+    <div class="container">
+      <h2 class="section-title">My Bookings</h2>
+      <div id="bookingsList" class="bookings-list">
+        <p class="empty-state">No bookings yet. Fill in the form above to get started!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section section-alt">
+    <div class="container contact-grid">
+      <div>
+        <h2 class="section-title left">Get in Touch</h2>
+        <p class="contact-text">Have a question before booking? We're here to help.</p>
+        <ul class="contact-list">
+          <li>&#128231; hello@bookeasy.co.uk</li>
+          <li>&#128222; +44 20 0000 0000</li>
+          <li>&#128205; 123 Booking Street, London, EC1A 1BB</li>
+        </ul>
+      </div>
+      <div class="contact-hours">
+        <h3>Opening Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday – Friday</td><td>9:00 – 17:00</td></tr>
+          <tr><td>Saturday</td><td>10:00 – 14:00</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="logo">BookEasy</span>
+      <p>&copy; 2026 BookEasy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
